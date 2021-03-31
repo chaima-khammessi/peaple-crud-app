@@ -1,14 +1,23 @@
 <div class="container my-5">
-    <form>
-        <div class="mb-3">
-          <label for="exampleInputEmail1" class="form-label">Email address</label>
-          <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-        </div>
-        <div class="mb-3">
-          <label for="exampleInputPassword1" class="form-label">Password</label>
-          <input type="password" class="form-control" id="exampleInputPassword1">
-        </div>
-       
-        <button type="submit" class="btn btn-primary">login</button>
-      </form>
+  <form [formGroup]="loginForm" (ngSubmit)="login()">
+    <div class="mb-3">
+      <label for="email">Email:</label>
+      <input class="form-control" type="text" name="email" id="email" formControlName="email">
+      <div *ngIf="email.touched && email.invalid">
+        <small class="text-danger" *ngIf="email.errors.required">email is required</small>
+        <small class="text-danger" *ngIf="email.errors.email">Format Email Invalid</small>
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputPassword1" class="form-label">Password</label>
+      <input type="password" class="form-control" id="exampleInputPassword1" formControlName="password">
+      <div *ngIf="password.touched && password.invalid && password.dirty">
+        <small class="text-danger" *ngIf="password.errors.required">passwor is required</small>
+        <small class="text-danger" *ngIf="password.errors.pattern">Invalid Password</small>
+        <small class="text-danger" *ngIf="password.errors.minlength">password must contain six number ?</small>
+      </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary" [disabled]="loginForm.invalid">login</button>
+  </form>
 </div>

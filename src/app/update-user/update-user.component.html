@@ -1,5 +1,9 @@
+
 <div class="container">
-    <form [formGroup]=myForm (ngSubmit)="saveUser()">
+    <button type="button" class="btn btn-primary" routerLink='/peoplelist'>Back</button>
+    <h1> Update User</h1>
+    <hr>
+    <form [formGroup]="updateUserForm" (ngSubmit)="updateUser()">
         <div class="form-row">
         <div class="form-group col">
         <label for="firstName">First Name:</label>
@@ -8,35 +12,34 @@
             <small class="text-danger" *ngIf="firstName.errors.required">First Name is required</small>
             <small class="text-danger" *ngIf="firstName.errors.pattern">Invalid First Name</small>
             <small class="text-danger" *ngIf="firstName.errors.minlength">First Name must contain two caracters at least?</small>
-        </div>
+        </div> 
         <label for="lastName">Last Name:</label>
         <input class="form-control" type="text" name="lastName" id="lastName"  formControlName="lastName">
-        <div *ngIf="lastName.touched && lastName.invalid">
+         <div *ngIf="lastName.touched && lastName.invalid">
             <small class="text-danger" *ngIf="lastName.errors.required">Last Name is required</small>
             <small class="text-danger" *ngIf="lastName.errors.pattern">Invalid Last Name</small>
             <small class="text-danger"  *ngIf="lastName.errors.minlength">Last Name must contain two caracters at least?</small>
-        </div>
+        </div> 
         <label for="phone">Phone:</label>
-        <input class="form-control" type="text" name="phone" id="phone"  formControlName="phone">
+        <input class="form-control" type="tel" name="phone" id="phone"  formControlName="phone">
         <div *ngIf="phone.touched && phone.invalid && phone.dirty">
         <small class="text-danger" *ngIf="phone.errors.required">phone is required</small>
+        <small class="text-danger" *ngIf="phone.errors.pattern">phone is Number</small>
         <small class="text-danger" *ngIf="phone.errors.minlength">phone must contain  eight number ?</small>
         <small class="text-danger"  *ngIf="phone.errors.maxlength">phone must contain  eight number ?</small>
-        </div>
+        </div> 
         <label for="email">Email:</label>
         <input class="form-control" type="text" name="email" id="email"  formControlName="email">
-        <div *ngIf="email.touched && email.invalid">
+         <div *ngIf="email.touched && email.invalid">
         <small class="text-danger" *ngIf="email.errors.required">email is required</small>
         <small class="text-danger" *ngIf="email.errors.email">Format Email Invalid</small>
-        </div>
+        </div> 
     </div>
 </div>
 <div class="form-row">
     <div class="form-group col">
-        <input type="submit" class="btn btn-primary" [disabled]="myForm.invalid" value="send">
+        <input type="submit" class="btn btn-primary" [disabled]="updateUserForm.invalid"  value="update User">
     </div>
     </div>
     </form>
-
-
 </div>

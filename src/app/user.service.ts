@@ -5,11 +5,15 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class UserService {
+  private getAllUserUrl = 'https://backend-people-crud-app.herokuapp.com/users'
+  private deletUserUrl = 'https://backend-people-crud-app.herokuapp.com/users/'
 
-  constructor(private http:HttpClient) { }
+  constructor(private http: HttpClient) { }
 
-  getAllUsers(){
-    let data=this.http.get<any>('https://jsonplaceholder.typicode.com/users');
-    return data;
+  getAllUsers() {
+    return this.http.get<any>(this.getAllUserUrl);
+  }
+  deleteUser(id:string){
+    return this.http.delete<any>(this.deletUserUrl + id)
   }
 }

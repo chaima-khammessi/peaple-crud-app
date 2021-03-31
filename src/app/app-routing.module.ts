@@ -1,3 +1,5 @@
+import { UpdateUserComponent } from './update-user/update-user.component';
+import { AddUserComponent } from './add-user/add-user.component';
 import { LoginComponent } from './components/login/login.component';
 import { Page404Component } from './components/page404/page404.component';
 import { HomeComponent } from './components/home/home.component';
@@ -21,16 +23,26 @@ const routes: Routes = [
   component:RegisterComponent
 },
 {
+  path:"add-user",
+  component:AddUserComponent
+},
+{
+  path:"update-user",
+  component:UpdateUserComponent
+},
+{
   path:"peoplelist",
   component:PeoplelistComponent
 },
-{
-  path: "page404",
-  component:Page404Component
-},
+
 {path: "login",
 component:LoginComponent
 },
+{
+  path: "**",
+  component:Page404Component
+},
+
 
 
 ];

@@ -1,52 +1,33 @@
 <h1> People List</h1>
 <div class="container">
-    <button type="button" class="btn btn-primary">ADD</button>
+    <button type="button" class="btn btn-primary" routerLink='/add-user'>ADD</button>
 
-
-    <table class="table">
+    <div *ngIf="peopleList.length==0" class="alert alert-warning"> no people found</div>
+    <table class="table" *ngIf="peopleList.length > 0" >
         <thead>
             <tr>
-                <th scope="col">#</th>
-                <th scope="col">Name</th>
-                <th scope="col">User Name</th>
+
+                <th scope="col">First Name</th>
+                <th scope="col">Last Name</th>
                 <th scope="col">Phone</th>
+                <th scope="col">Email</th>
                 <th scope="col">#</th>
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>21526478</td>
+            <tr *ngFor="let person of peopleList">
+
+                <td>{{person.firstname}}</td>
+                <td>{{person.lasttname}}</td>
+                <td>{{person.phone}}</td>
+                <td>{{person.email}}</td>
                 <td>
-                    <button type="button" class="btn btn-primary">Details</button>&nbsp; 
-                    <button type="button" class="btn btn-danger">Delete</button>&nbsp; 
-                    <button type="button" class="btn btn-warning">Update</button>
+                    <button type="button" class="btn btn-primary">Details</button>
+                    <button type="button" class="btn btn-danger mx-3" (click)="deleteUser(person)">Delete</button>
+                    <button type="button" class="btn btn-warning" routerLink='/update-user'>Update</button>
                 </td>
             </tr>
-            <tr>
-                <th scope="row">2</th>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>65124785</td>
-                <td>
-                    <button type="button" class="btn btn-primary">Details</button>&nbsp; 
-                    <button type="button" class="btn btn-danger">Delete</button>&nbsp; 
-                    <button type="button" class="btn btn-warning">Update</button>
-                </td>
-            </tr>
-            <tr>
-                <th scope="row">3</th>
-                <td>chaima</td>
-                <td>Thornton</td>
-                <td>5124521</td>
-                <td>
-                    <button type="button" class="btn btn-primary">Details</button>&nbsp; 
-                    <button type="button" class="btn btn-danger">Delete</button>&nbsp; 
-                    <button type="button" class="btn btn-warning">Update</button>
-                </td>
-            </tr>
+
         </tbody>
     </table>
 </div>
