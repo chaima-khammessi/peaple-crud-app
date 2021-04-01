@@ -46,16 +46,19 @@
       <div class="mb-3">
         <label for="exampleInputPassword1" class="form-label">Repassword</label>
         <input type="password" class="form-control" id="exampleInputPassword1" formControlName="repassword">
-        <div *ngIf="repassword.touched && repassword.invalid && repassword.dirty">
+        <div *ngIf="repassword.touched && repassword.invalid">
           <small class="text-danger" *ngIf="repassword.errors.required">Repeat password is required please</small>
          
+        </div>
+        <div *ngIf="repassword.valid && repassword.value != password.value" class="text-danger">
+          The password entered do not match
         </div>
       </div>
   </div>
 </div>
 <div class="form-row">
   <div class="form-group col">
-      <input type="submit" class="btn btn-primary" [disabled]="registerForm.invalid"  value="update User">
+      <input type="submit" class="btn btn-primary" [disabled]="registerForm.invalid || repassword.value != password.value"  value="update User">
   </div>
   </div>
   </form>

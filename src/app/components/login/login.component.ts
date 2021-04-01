@@ -1,3 +1,4 @@
+import { User } from './../../user';
 import { FormGroup, Validators, FormControl, FormBuilder } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 
@@ -40,7 +41,10 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
   }
   login() {
-    console.log(this.loginForm.value);
+   let data = this.loginForm.value;
+   let user = new User(null, null ,null, data.email, data.password);
+   console.log(user);
+   
 
   }
 }

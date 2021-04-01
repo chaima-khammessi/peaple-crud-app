@@ -1,3 +1,4 @@
+import { User } from './../../user';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 
@@ -65,12 +66,15 @@ export class RegisterComponent implements OnInit {
     return this.registerForm.get('password')
   }
   get repassword(){
-    return this.registerForm.get('password')
+    return this.registerForm.get('repassword')
   }
   ngOnInit(): void {
   }
   register() {
-    console.log(this.registerForm.value);
+   let data = this.registerForm.value;
+   let user = new User(data.firstName, data.lastName, data.phone, data.email, data.password)
+   console.log(user);
+   
 
   }
 
