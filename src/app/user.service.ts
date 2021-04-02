@@ -1,3 +1,4 @@
+import { User } from './user';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
@@ -7,6 +8,7 @@ import { Injectable } from '@angular/core';
 export class UserService {
   private getAllUserUrl = 'https://backend-people-crud-app.herokuapp.com/users'
   private deletUserUrl = 'https://backend-people-crud-app.herokuapp.com/users/'
+  private addUserUrl = 'https://backend-people-crud-app.herokuapp.com/users/add'
 
   constructor(private http: HttpClient) { }
 
@@ -15,5 +17,8 @@ export class UserService {
   }
   deleteUser(id:string){
     return this.http.delete<any>(this.deletUserUrl + id)
+  }
+  addUser(user:User){
+    return this.http.post<any>(this.addUserUrl, user )
   }
 }
