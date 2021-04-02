@@ -5,7 +5,8 @@ export class User {
         private lastName ? : String,
         private phone ? : String,
         private email ? : String,
-        private password ? : string,
+        private password ? : String,
+        private _id ? :String
     ) {
 
     }
