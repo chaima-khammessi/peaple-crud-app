@@ -22,7 +22,7 @@
                 <td>{{person.phone}}</td>
                 <td>{{person.email}}</td>
                 <td>
-                    <button type="button" class="btn btn-primary">Details</button>
+                    <button type="button" class="btn btn-primary" (click)="displayUser(person)">Details</button>
                     <button type="button" class="btn btn-danger mx-3" (click)="deleteUser(person)">Delete</button>
                     <button type="button" class="btn btn-warning" routerLink="/update-user/{{person._id}}">Update</button>
                 </td>

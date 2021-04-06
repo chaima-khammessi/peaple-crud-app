@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { UserService } from './../../user.service';
 import { Component, OnInit } from '@angular/core';
@@ -12,7 +13,8 @@ export class PeoplelistComponent implements OnInit {
 
 
   constructor(private userServise: UserService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private router:Router
   ) { }
 
   ngOnInit(): void {
@@ -36,12 +38,13 @@ export class PeoplelistComponent implements OnInit {
       },
       err => {
         console.log(err);
-
       }
 
-    )
+    )}
 
+    displayUser(person){
+      this.router.navigate([`display-user/${person._id}`])
+      
 
+    }
   }
-
-}

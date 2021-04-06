@@ -17,6 +17,7 @@ import { from } from 'rxjs';
 import { AddUserComponent } from './add-user/add-user.component';
 import { UpdateUserComponent } from './update-user/update-user.component';
 import { ToastrModule,ToastNoAnimation,ToastNoAnimationModule} from 'ngx-toastr';
+import { DisplayUserComponent } from './display-user/display-user.component';
  
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { ToastrModule,ToastNoAnimation,ToastNoAnimationModule} from 'ngx-toastr'
     HomeComponent,
     LoginComponent,
     AddUserComponent,
-    UpdateUserComponent
+    UpdateUserComponent,
+    DisplayUserComponent
   ],
   imports: [
     BrowserModule,

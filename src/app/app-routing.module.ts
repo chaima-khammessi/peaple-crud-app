@@ -1,3 +1,4 @@
+import { DisplayUserComponent } from './display-user/display-user.component';
 import { AuthGuard } from './auth.guard';
 import { UpdateUserComponent } from './update-user/update-user.component';
 import { AddUserComponent } from './add-user/add-user.component';
@@ -18,6 +19,11 @@ const routes: Routes = [
   {
     path: "test",
     component:TestComponent,
+    canActivate:[AuthGuard]
+  },
+  {
+    path:"display-user/:id",
+    component:DisplayUserComponent,
     canActivate:[AuthGuard]
   },
 {
