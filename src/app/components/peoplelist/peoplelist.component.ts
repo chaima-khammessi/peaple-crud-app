@@ -1,3 +1,4 @@
+import { ToastrService } from 'ngx-toastr';
 import { UserService } from './../../user.service';
 import { Component, OnInit } from '@angular/core';
 
@@ -10,7 +11,9 @@ export class PeoplelistComponent implements OnInit {
   peopleList = [];
 
 
-  constructor(private userServise: UserService) { }
+  constructor(private userServise: UserService,
+    private toastr: ToastrService
+  ) { }
 
   ngOnInit(): void {
     this.userServise.getAllUsers().subscribe(
@@ -29,8 +32,7 @@ export class PeoplelistComponent implements OnInit {
     this.peopleList.splice(index, 1)
     this.userServise.deleteUser(person._id).subscribe(
       res => {
-        console.log(res);
-
+        this.toastr.error(res.message);
       },
       err => {
         console.log(err);

@@ -1,6 +1,9 @@
+import { ToastrService } from 'ngx-toastr';
+import { UserService } from './../../user.service';
 import { User } from './../../user';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -10,7 +13,11 @@ import { Component, OnInit } from '@angular/core';
 export class RegisterComponent implements OnInit {
 
   registerForm: FormGroup
-  constructor(private formbuilder: FormBuilder) {
+  constructor(private formbuilder: FormBuilder,
+     private userService:UserService,
+     private toastr:ToastrService,
+     private router:Router
+      ) {
     let formControls = {
       firstName: new FormControl('', [
         Validators.required,
@@ -69,13 +76,27 @@ export class RegisterComponent implements OnInit {
     return this.registerForm.get('repassword')
   }
   ngOnInit(): void {
+    let  isLoggedIn=this.userService.isLoggedIn();
+    if(isLoggedIn){
+      this.router.navigate(['/peoplelist'])
+    }
   }
   register() {
    let data = this.registerForm.value;
    let user = new User(data.firstName, data.lastName, data.phone, data.email, data.password)
-   console.log(user);
-   
+   this.userService.registerAdmin(user).subscribe(
+     res=>{
+      this.toastr.success(res.message);
+      this.router.navigate(['/login'])
 
+     },
+     err=>{
+       console.log(err);
+       
+     }
+   )
   }
+
+
 
 }

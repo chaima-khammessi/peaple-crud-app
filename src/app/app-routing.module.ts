@@ -1,3 +1,4 @@
+import { AuthGuard } from './auth.guard';
 import { UpdateUserComponent } from './update-user/update-user.component';
 import { AddUserComponent } from './add-user/add-user.component';
 import { LoginComponent } from './components/login/login.component';
@@ -16,7 +17,8 @@ const routes: Routes = [
   },
   {
     path: "test",
-    component:TestComponent
+    component:TestComponent,
+    canActivate:[AuthGuard]
   },
 {
   path: "register",
@@ -24,15 +26,18 @@ const routes: Routes = [
 },
 {
   path:"add-user",
-  component:AddUserComponent
+  component:AddUserComponent,
+  canActivate:[AuthGuard]
 },
 {
   path:"update-user/:id",
-  component:UpdateUserComponent
+  component:UpdateUserComponent,
+  canActivate:[AuthGuard]
 },
 {
   path:"peoplelist",
-  component:PeoplelistComponent
+  component:PeoplelistComponent,
+  canActivate:[AuthGuard]
 },
 
 {path: "login",
